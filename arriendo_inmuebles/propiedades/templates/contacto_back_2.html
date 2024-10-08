@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Contacto{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Contacto</h1>
+    
+    <!-- Mostrar mensajes de éxito o error -->
+    {% if messages %}
+        <div class="alert alert-info">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    <form method="post" action="{% url 'contacto' %}">
+        {% csrf_token %}
+        
+        <div class="mb-3 row">
+            <label for="{{ form.nombre.id_for_label }}" class="col-sm-2 col-form-label">Nombre</label>
+            <div class="col-sm-10">
+                {{ form.nombre }}
+            </div>
+        </div>
+        
+        <div class="mb-3 row">
+            <label for="{{ form.email.id_for_label }}" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                {{ form.email }}
+            </div>
+        </div>
+        
+        <div class="mb-3 row">
+            <label for="{{ form.mensaje.id_for_label }}" class="col-sm-2 col-form-label">Mensaje</label>
+            <div class="col-sm-10">
+                {{ form.mensaje }}
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+{% endblock %}

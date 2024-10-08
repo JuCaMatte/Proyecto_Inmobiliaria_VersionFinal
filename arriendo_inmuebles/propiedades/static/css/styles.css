@@ -1,0 +1,4 @@
+.fondo-transparente {
+    background-color: rgba(255, 255, 255, 0.3); /* Fondo blanco con 30% de opacidad */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Opcional: Borde para mayor definición */
+}

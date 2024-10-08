@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}Crear Propiedad{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Crear Nueva Propiedad</h1>
+    <form method="post" action="{% url 'crear_propiedad' %}">
+        
+        {% csrf_token %}
+
+        <!-- Mostrar errores del formulario -->
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ field.label_tag }}: {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        <!--
+        <div class="form-group">
+            {{ form.nombre.label_tag }}
+            {{ form.nombre }}
+            {% for error in form.nombre.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.descripcion.label_tag }}
+            {{ form.descripcion }}
+            {% for error in form.descripcion.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.tamaño.label_tag }}
+            {{ form.tamaño }}
+            {% for error in form.tamaño.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.baños.label_tag }}
+            {{ form.baños }}
+            {% for error in form.baños.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.comuna.label_tag }}
+            {{ form.comuna }}
+            {% for error in form.comuna.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+        </div>
+        -->
+
+
+
+
+        {{ form.as_p }} <!--Renderiza el formulario como párrafos -->
+        <button type="submit" class="btn btn-primary">Guardar Propiedad</button>
+    </form>
+</div>
+{% endblock %}

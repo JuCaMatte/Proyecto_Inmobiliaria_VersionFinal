@@ -1,0 +1,39 @@
+<!-- listar_propiedades.html -->
+{% extends 'base.html' %}
+
+{% block title %}Listar Propiedades{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Lista de Propiedades</h1>
+
+    <!-- Mostrar mensaje si no hay propiedades -->
+    {% if propiedades %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Precio de Arriendo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for propiedad in propiedades %}
+                    <tr>
+                        <td>{{ propiedad.nombre }}</td>
+                        <td>{{ propiedad.descripcion }}</td>
+                        <td>{{ propiedad.precio_arriendo }}</td>
+                        <td>
+                            <!-- Enlace para modificar la propiedad -->
+                            <a href="{% url 'actualizar_propiedad' id=propiedad.id %}" class="btn btn-warning btn-sm">Modificar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay propiedades disponibles.</p>
+    {% endif %}
+</div>
+{% endblock %}

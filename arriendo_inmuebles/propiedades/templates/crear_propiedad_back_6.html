@@ -1,0 +1,135 @@
+{% extends 'base.html' %} {% block title %}Crear Propiedad{% endblock %} {%
+block content %}
+<div class="container mt-5">
+  <h1>Crear Nueva Propiedad</h1>
+
+  <div class="bg-light p-4 rounded border border-primary">
+    <!-- Fondo y borde -->
+    <form method="post" action="{% url 'crear_propiedad' %}">
+      {% csrf_token %}
+
+      <!-- Mostrar errores del formulario -->
+      {% if form.errors %}
+      <div class="alert alert-danger">
+        <ul>
+          {% for field in form %} {% for error in field.errors %}
+          <li>{{ field.label_tag }}: {{ error }}</li>
+          {% endfor %} {% endfor %} {% for error in form.non_field_errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      <!-- Campos del formulario -->
+      <div class="row mb-3">
+        <div class="col-sm-6">
+          <div class="form-group">
+            {{ form.nombre.label_tag }} {{ form.nombre }}
+            <!-- Las clases CSS se aplican desde forms.py -->
+            {% for error in form.nombre.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            {{ form.descripcion.label_tag }} {{ form.descripcion }}
+            <!-- Las clases CSS se aplican desde forms.py -->
+            {% for error in form.descripcion.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-6">
+          <div class="form-group">
+            {{ form.tamaño.label_tag }} {{ form.tamaño }}
+            <!-- Las clases CSS se aplican desde forms.py -->
+            {% for error in form.tamaño.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            {{ form.estacionamientos.label_tag }} {{ form.estacionamientos }}
+            <!-- Las clases CSS se aplican desde forms.py -->
+            {% for error in form.estacionamientos.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-6">
+          <div class="form-group">
+            {{ form.habitaciones.label_tag }} {{ form.habitaciones }}
+            <!-- Las clases CSS se aplican desde forms.py -->
+            {% for error in form.habitaciones.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            {{ form.baños.label_tag }} {{ form.baños }}
+            <!-- Las clases CSS se aplican desde forms.py -->
+            {% for error in form.baños.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-6">
+          <div class="form-group">
+            {{ form.direccion.label_tag }} {{ form.direccion }}
+            <!-- Las clases CSS se aplican desde forms.py -->
+            {% for error in form.direccion.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            {{ form.comuna.label_tag }} {{ form.comuna }}
+            <!-- Las clases CSS se aplican desde forms.py -->
+            {% for error in form.comuna.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-6">
+          <div class="form-group">
+            {{ form.tipo.label_tag }} {{ form.tipo }}
+            <!-- Las clases CSS se aplican desde forms.py -->
+            {% for error in form.tipo.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            {{ form.precio_arriendo.label_tag }} {{ form.precio_arriendo }}
+            <!-- Las clases CSS se aplican desde forms.py -->
+            {% for error in form.precio_arriendo.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Guardar Propiedad</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

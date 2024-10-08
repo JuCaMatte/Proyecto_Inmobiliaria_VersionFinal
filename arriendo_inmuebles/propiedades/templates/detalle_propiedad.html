@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle de Propiedad{% endblock %}
+
+{% block content %}
+    <h1>{{ propiedad.nombre }}</h1>
+    <p>{{ propiedad.descripcion }}</p>
+    <p><strong>Tamaño:</strong> {{ propiedad.tamaño }} m²</p>
+    <p><strong>Estacionamientos:</strong> {{ propiedad.estacionamientos }}</p>
+    <p><strong>Habitaciones:</strong> {{ propiedad.habitaciones }}</p>
+    <p><strong>Baños:</strong> {{ propiedad.baños }}</p>
+    <p><strong>Dirección:</strong> {{ propiedad.direccion }}</p>
+    <p><strong>Comuna:</strong> {{ propiedad.comuna.nombre }}</p>
+    <p><strong>Tipo:</strong> {{ propiedad.tipo }}</p>
+    <p><strong>Precio de Arriendo:</strong> ${{ propiedad.precio_arriendo }}</p>
+{% endblock %}

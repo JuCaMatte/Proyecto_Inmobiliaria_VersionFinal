@@ -1,0 +1,71 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Sitio de Propiedades{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    {% load static %}
+    <style>
+        
+        body {
+            background-image: url("{% static 'images/fondo_inmobiliaria.jpg' %}");
+            background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+        }
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'index' %}">Inicio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'listar_propiedades' %}">Listar Propiedades</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'crear_propiedad' %}">Crear Propiedad</a>
+                </li>
+                <!-- Dropdown para Actualizar Propiedad -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownActualizar" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Actualizar Propiedades
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownActualizar">
+                        {% for propiedad in propiedades %}
+                            <a class="dropdown-item" href="{% url 'actualizar_propiedad' id=propiedad.id %}">{{ propiedad.nombre }}</a>
+                        {% endfor %}
+                    </div>
+                </li>
+                <!-- Dropdown para Eliminar Propiedad -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownEliminar" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Eliminar Propiedades
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownEliminar">
+                        {% for propiedad in propiedades %}
+                            <a class="dropdown-item" href="{% url 'borrar_propiedad' id=propiedad.id %}">{{ propiedad.nombre }}</a>
+                        {% endfor %}
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

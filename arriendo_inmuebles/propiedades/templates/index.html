@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    <div class="fondo-transparente p-3 mb-4 jumbotron text-center">
+        <h1 class="display-4">Bienvenido a la Agencia de Propiedades</h1>
+        <p class="lead">Encuentra la propiedad ideal para arrendar o publica la tuya con nosotros.</p>
+        <hr class="my-4">
+        <p>Explora nuestras opciones o ingresa como arrendatario o arrendador para gestionar tus propiedades.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'listar_propiedades' %}" role="button">Ver Propiedades</a>
+        <a class="btn btn-secondary btn-lg" href="{% url 'crear_propiedad' %}" role="button">Publicar Propiedad</a>
+    </div>
+
+
+{% endblock %}
